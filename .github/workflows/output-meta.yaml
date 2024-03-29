@@ -1,0 +1,8 @@
+name: Output event details on issue
+on: [ issues, workflow_dispatch ]
+jobs:
+  listen-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output github context
+        run: echo "${{ toJSON(env) }}"
