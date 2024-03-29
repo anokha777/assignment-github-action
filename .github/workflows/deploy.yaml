@@ -16,4 +16,20 @@ jobs:
         run: npm run lint
       - name: Run Unit test
         run: npm run test
+  deploy-app:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+      - name: Install nodejs software
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install npm packages
+        run: npm ci
+      - name: Build code
+        run: npm run build
+      - name: Deploy code
+        run: echo "Code deployed to server..."
 
